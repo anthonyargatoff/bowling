@@ -5,6 +5,7 @@ public class BallController : MonoBehaviour
   [SerializeField] private float force = 1f;
   [SerializeField] private Transform ballAnchor;
   [SerializeField] private InputManager inputManager;
+  [SerializeField] private Transform launchIndicator;
   private Rigidbody ballRigidbody;
   private bool isBallLaunched = false;
 
@@ -28,6 +29,7 @@ public class BallController : MonoBehaviour
     isBallLaunched = true;
     transform.parent = null;
     ballRigidbody.isKinematic = false;
-    ballRigidbody.AddForce(transform.forward * force, ForceMode.Impulse);
+    ballRigidbody.AddForce(launchIndicator.forward * force, ForceMode.Impulse);
+    launchIndicator.gameObject.SetActive(false);
   }
 }
